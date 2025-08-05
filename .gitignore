@@ -52,12 +52,16 @@ data/validation_results.json
 data/performance_test_results.json
 data/quality_report.json
 data/document_embeddings.pkl
+data/embeddings_cache.pkl
+data/semantic_embeddings.pkl
 *.log
 logs/
 
 # Large model files (if any)
 models/gemma-3-1b-it/
 models/prototype_embeddings.pkl
+models/sentence-transformers/
+models/all-MiniLM-L6-v2/
 *.safetensors
 *.bin
 *.h5
@@ -86,6 +90,7 @@ test_*.py
 test_results.json
 hierarchical_test_results.json
 performance_test_results.json
+coverage_results.json
 
 # Debug files
 debug_*.py
@@ -114,4 +119,13 @@ coverage.xml
 # mypy
 .mypy_cache/
 .dmypy.json
-dmypy.json 
+dmypy.json
+
+# Deployment
+.railway/
+.render/
+.vercel/
+
+# Local development
+local_config.py
+dev_settings.py 

@@ -57,6 +57,12 @@ python api/main.py
 # Access at http://localhost:8001
 ```
 
+### Deploy to Cloud (Production)
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Railway, Render, or Vercel.
+
+**Live Demo**: [Coming soon - deploy to get your URL!]
+
 ## 📊 Current Status
 
 - **📈 Index Size**: 378+ classified personal blogs

@@ -159,6 +159,14 @@ def generate_quality_report():
     print(f"\n✅ Quality report saved to: data/quality_report.json")
 
 if __name__ == "__main__":
+    import sys
+    
+    # Check for dry-run flag
+    if "--dry-run" in sys.argv:
+        print("🧪 DRY RUN: Quality validation would run here")
+        print("✅ Quality validation script is ready")
+        sys.exit(0)
+    
     if len(sys.argv) > 1 and sys.argv[1] == "report":
         generate_quality_report()
     else:

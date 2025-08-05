@@ -93,23 +93,36 @@ class SemanticSearch:
         if self.embeddings is None:
             return keyword_results[:top_k]
         
-        # Get semantic results
-        semantic_results = self.search(query, top_k=top_k*2)
+        # Get semantic results (find different results, not just re-rank)
+        semantic_results = self.search(query, top_k=top_k*3)  # Get more candidates
         
         # Create a map of URL to semantic score
         semantic_scores = {r['url']: r['semantic_score'] for r in semantic_results}
         
-        # Enhance keyword results with semantic scores
-        enhanced_results = []
+        # Get URLs from keyword results
+        keyword_urls = {r['url'] for r in keyword_results}
+        
+        # Combine results: keyword results + semantic-only results
+        combined_results = []
+        
+        # Add keyword results with semantic scores
         for result in keyword_results:
             semantic_score = semantic_scores.get(result['url'], 0.0)
-            enhanced_results.append({
+            combined_results.append({
                 **result,
                 'semantic_score': semantic_score,
-                'hybrid_score': semantic_score * 0.3  # Weight semantic score
+                'hybrid_score': semantic_score * 0.3
             })
         
-        # Sort by hybrid score
-        enhanced_results.sort(key=lambda x: x['hybrid_score'], reverse=True)
+        # Add semantic-only results (not in keyword results)
+        for result in semantic_results:
+            if result['url'] not in keyword_urls:
+                combined_results.append({
+                    **result,
+                    'hybrid_score': result['semantic_score'] * 0.7  # Higher weight for semantic-only
+                })
         
-        return enhanced_results[:top_k] 
+        # Sort by hybrid score
+        combined_results.sort(key=lambda x: x['hybrid_score'], reverse=True)
+        
+        return combined_results[:top_k] 
