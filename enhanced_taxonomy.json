@@ -1,0 +1,188 @@
+{
+    "version": "1.0",
+    "description": "Enhanced taxonomy for personal blog classification with weighted scoring and structural indicators",
+    
+    "domain_patterns": {
+      "high_confidence_positive": {
+        "patterns": [
+          "github.io",
+          "netlify.app", 
+          "vercel.app",
+          "hashnode.dev",
+          "dev.to",
+          "substack.com",
+          "medium.com/@",
+          "tumblr.com"
+        ],
+        "weight": 5,
+        "description": "Strong indicators of personal blogs"
+      },
+      
+      "medium_confidence_positive": {
+        "patterns": [
+          "wordpress.com",
+          "blogspot.com"
+        ],
+        "weight": 2,
+        "description": "Platforms that can be personal or corporate"
+      },
+      
+      "high_confidence_negative": {
+        "patterns": [
+          "blogspot.com/business",
+          "wordpress.com/business", 
+          "themeforest.net",
+          "envato.com",
+          "wix.com",
+          "squarespace.com",
+          "shopify.com",
+          "amazon.com",
+          "microsoft.com",
+          "google.com",
+          "apple.com",
+          "facebook.com",
+          "twitter.com",
+          "linkedin.com",
+          "forbes.com",
+          "techcrunch.com",
+          "wired.com",
+          "theverge.com",
+          "arstechnica.com",
+          "engadget.com",
+          "gizmodo.com",
+          "mashable.com",
+          "venturebeat.com",
+          "zdnet.com",
+          "cnet.com"
+        ],
+        "weight": -5,
+        "description": "Strong indicators of corporate/commercial sites"
+      }
+    },
+  
+    "content_indicators": {
+      "positive_regex": {
+        "personal_pronouns": {
+          "patterns": [
+            "\\bmy\\s+(thoughts|experience|journey|story|blog|notes|learning|experiments|projects|research|findings|observations|insights|reflections)\\b",
+            "\\bI\\s+(think|believe|feel|know|learned|discovered|found|realized|noticed|observed)\\b",
+            "\\bin\\s+my\\s+(opinion|view|perspective|experience)\\b",
+            "\\bfrom\\s+my\\s+(perspective|experience|point\\s+of\\s+view)\\b"
+          ],
+          "weight": 1,
+          "case_sensitive": false
+        },
+        
+        "personal_identity": {
+          "patterns": [
+            "\\babout\\s+me\\b",
+            "\\babout\\s+the\\s+author\\b", 
+            "\\bpersonal\\s+blog\\b",
+            "\\bauthor\\s+bio\\b",
+            "\\bcontact\\s+me\\b",
+            "\\bfollow\\s+me\\s+on\\b",
+            "\\bmy\\s+(twitter|github|linkedin|portfolio|website)\\b"
+          ],
+          "weight": 2,
+          "case_sensitive": false
+        }
+      },
+      
+      "negative_regex": {
+        "marketing_terms": {
+          "patterns": [
+            "\\bsponsored\\s+post\\b",
+            "\\badvertisement\\b",
+            "\\bpromoted\\s+content\\b",
+            "\\baffiliate\\s+link\\b",
+            "\\bbuy\\s+now\\b",
+            "\\bshop\\s+now\\b",
+            "\\blimited\\s+time\\s+offer\\b",
+            "\\bdiscount\\s+code\\b",
+            "\\bcoupon\\s+code\\b",
+            "\\bfree\\s+trial\\b",
+            "\\bsign\\s+up\\s+now\\b",
+            "\\bsubscribe\\s+now\\b",
+            "\\bdownload\\s+now\\b",
+            "\\bget\\s+started\\b",
+            "\\blearn\\s+more\\b",
+            "\\bread\\s+more\\b",
+            "\\bclick\\s+here\\b",
+            "\\bvisit\\s+our\\s+website\\b",
+            "\\bcontact\\s+us\\b",
+            "\\bsales\\s+team\\b",
+            "\\bmarketing\\s+team\\b"
+          ],
+          "weight": -2,
+          "case_sensitive": false
+        },
+        
+        "corporate_terms": {
+          "patterns": [
+            "\\bcorporate\\s+blog\\b",
+            "\\bcompany\\s+blog\\b",
+            "\\bofficial\\s+blog\\b",
+            "\\bbrand\\s+blog\\b",
+            "\\bmarketing\\s+blog\\b",
+            "\\bseo\\s+blog\\b",
+            "\\bcontent\\s+marketing\\b",
+            "\\blead\\s+generation\\b",
+            "\\bconversion\\s+optimization\\b",
+            "\\broi\\b",
+            "\\bkpi\\b",
+            "\\bmetrics\\b",
+            "\\banalytics\\b",
+            "\\bgrowth\\s+hacking\\b",
+            "\\bdigital\\s+marketing\\b",
+            "\\bsocial\\s+media\\s+marketing\\b",
+            "\\bemail\\s+marketing\\b",
+            "\\bppc\\b",
+            "\\bsem\\b",
+            "\\bseo\\b",
+            "\\bbacklink\\b",
+            "\\bkeyword\\b",
+            "\\branking\\b",
+            "\\btraffic\\b",
+            "\\bconversion\\b",
+            "\\bcta\\b",
+            "\\bfunnel\\b",
+            "\\blanding\\s+page\\b",
+            "\\blead\\s+magnet\\b",
+            "\\bopt-in\\b",
+            "\\bnewsletter\\s+signup\\b",
+            "\\bemail\\s+list\\b",
+            "\\bsubscriber\\b",
+            "\\bcustomer\\b",
+            "\\bclient\\b",
+            "\\bprospect\\b",
+            "\\blead\\b",
+            "\\bsale\\b",
+            "\\brevenue\\b",
+            "\\bprofit\\b",
+            "\\bbusiness\\b",
+            "\\benterprise\\b",
+            "\\bcorporate\\b",
+            "\\bcompany\\b",
+            "\\borganization\\b",
+            "\\bagency\\b",
+            "\\bconsulting\\b",
+            "\\bservices\\b",
+            "\\bsolutions\\b",
+            "\\bplatform\\b",
+            "\\bsoftware\\b",
+            "\\btool\\b",
+            "\\bproduct\\b",
+            "\\bservice\\b",
+            "\\bpricing\\b",
+            "\\bplans\\b",
+            "\\bfeatures\\b",
+            "\\bbenefits\\b",
+            "\\badvantages\\b",
+            "\\bwhy\\s+choose\\s+us\\b"
+          ],
+          "weight": -2,
+          "case_sensitive": false
+        }
+      }
+    }
+  }
