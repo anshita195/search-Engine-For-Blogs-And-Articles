@@ -3,12 +3,13 @@
 Personal Blog Search Engine API
 """
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, FileResponse
 import json
 from pathlib import Path
 import sys
+import time
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -24,16 +25,27 @@ app.add_middleware(
 
 # Mock search index
 SEARCH_INDEX = []
+SEMANTIC_SEARCH = None
 
 def load_search_index():
     """Load search index from file."""
-    global SEARCH_INDEX
+    global SEARCH_INDEX, SEMANTIC_SEARCH
     try:
         index_file = Path("data/search_index.json")
         if index_file.exists():
             with open(index_file, "r", encoding="utf-8") as f:
                 SEARCH_INDEX = json.load(f)
-            print(f"📚 Loaded {len(SEARCH_INDEX)} documents")
+                print(f"📚 Loaded {len(SEARCH_INDEX)} documents")
+                
+                # Initialize semantic search
+                try:
+                    from api.semantic_search import SemanticSearch
+                    SEMANTIC_SEARCH = SemanticSearch()
+                    SEMANTIC_SEARCH.load_or_create_embeddings(SEARCH_INDEX)
+                    print("🧠 Semantic search initialized")
+                except Exception as e:
+                    print(f"⚠️ Semantic search not available: {e}")
+                    SEMANTIC_SEARCH = None
         else:
             print("⚠️ No search index found")
             SEARCH_INDEX = []
@@ -60,23 +72,44 @@ async def root():
         """)
 
 @app.get("/api/search")
-async def search(q: str):
-    """Search for personal blogs."""
+async def search(
+    q: str = Query(..., description="Search query"),
+    use_semantic: bool = Query(False, description="Use semantic search"),
+    limit: int = Query(10, description="Number of results to return")
+):
+    """Search for personal blogs with optional semantic search."""
     if not SEARCH_INDEX:
         load_search_index()
     
+    start_time = time.time()
+    
+    # Keyword search
     query_lower = q.lower()
-    matching_results = []
+    keyword_results = []
     
     for doc in SEARCH_INDEX:
         if (query_lower in doc.get('title', '').lower() or 
             query_lower in doc.get('content', '').lower()):
-            matching_results.append(doc)
+            keyword_results.append(doc)
+    
+    # Apply semantic search if requested and available
+    if use_semantic and SEMANTIC_SEARCH:
+        try:
+            results = SEMANTIC_SEARCH.hybrid_search(q, keyword_results, top_k=limit)
+        except Exception as e:
+            print(f"⚠️ Semantic search failed: {e}")
+            results = keyword_results[:limit]
+    else:
+        results = keyword_results[:limit]
+    
+    search_time = time.time() - start_time
     
     return {
         "query": q,
-        "results": matching_results[:10],  # Limit to 10 results
-        "total_results": len(matching_results)
+        "results": results,
+        "total_results": len(keyword_results),
+        "search_time_ms": round(search_time * 1000, 2),
+        "semantic_used": use_semantic and SEMANTIC_SEARCH is not None
     }
 
 @app.get("/api/health")

@@ -57,7 +57,7 @@ def fix_search_index_encoding():
         replacements = {
             'Ã¢â‚¬â€': '—',  # em dash
             'Ã¢â‚¬â€œ': '–',  # en dash
-            'Ã¢â‚¬â„¢': "'",  # right single quote
+            'Ã¢â‚¬â„¢': "'",  # right single quote~
             'Ã¢â‚¬Å"': '"',   # right double quote
             'Ã¢â‚¬Å"': '"',   # left double quote
             'Ã¢â‚¬â¢': '•',   # bullet

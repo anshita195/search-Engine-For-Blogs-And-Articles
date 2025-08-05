@@ -47,11 +47,17 @@ Thumbs.db
 # Project specific
 data/crawled/
 data/*.db
+data/search_index_backup.json
+data/validation_results.json
+data/performance_test_results.json
+data/quality_report.json
+data/document_embeddings.pkl
 *.log
 logs/
 
 # Large model files (if any)
 models/gemma-3-1b-it/
+models/prototype_embeddings.pkl
 *.safetensors
 *.bin
 *.h5
@@ -79,6 +85,7 @@ test_*.py
 *_test.py
 test_results.json
 hierarchical_test_results.json
+performance_test_results.json
 
 # Debug files
 debug_*.py
@@ -89,6 +96,7 @@ debug_*.py
 *.backup
 *_old.py
 *_backup.py
+search_index_backup.json
 
 # Jupyter notebooks
 *.ipynb
