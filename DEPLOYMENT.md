@@ -17,7 +17,7 @@
 4. **Configure**:
    - **Build Command**: `pip install -r requirements.txt`
    - **Start Command**: `python api/main.py`
-   - **Environment**: Python 3.9
+   - **Environment**: Python 3.9 (specified in runtime.txt)
 
 ### Option 3: Vercel (Free)
 1. **Sign up** at [vercel.com](https://vercel.com)
