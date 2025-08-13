@@ -1,8 +1,12 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# C extensions
 *.so
+
+# Distribution / packaging
 .Python
 build/
 develop-eggs/
@@ -16,105 +20,99 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# Virtual environments
-venv/
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
 env/
+venv/
 ENV/
 env.bak/
 venv.bak/
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Spyder project settings
+.spyderproject
+.spyproject
 
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Rope project settings
+.ropeproject
 
-# Project specific
-data/crawled/
-data/*.db
-data/search_index_backup.json
-data/validation_results.json
-data/performance_test_results.json
-data/quality_report.json
-data/document_embeddings.pkl
-data/embeddings_cache.pkl
-data/semantic_embeddings.pkl
-*.log
-logs/
-
-# Large model files (if any)
-models/gemma-3-1b-it/
-models/prototype_embeddings.pkl
-models/sentence-transformers/
-models/all-MiniLM-L6-v2/
-*.safetensors
-*.bin
-*.h5
-
-# Temporary files
-*.tmp
-*.temp
-temp/
-tmp/
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# API keys and secrets
-.env
-.env.local
-.env.production
-secrets.json
-config.json
-
-# Test files
-test_*.py
-*_test.py
-test_results.json
-hierarchical_test_results.json
-performance_test_results.json
-coverage_results.json
-
-# Debug files
-debug_*.py
-*_debug.py
-
-# Old/backup files
-*.bak
-*.backup
-*_old.py
-*_backup.py
-search_index_backup.json
-
-# Jupyter notebooks
-*.ipynb
-.ipynb_checkpoints/
-
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+# mkdocs documentation
+/site
 
 # mypy
 .mypy_cache/
@@ -128,4 +126,54 @@ dmypy.json
 
 # Local development
 local_config.py
-dev_settings.py 
+dev_settings.py
+
+# PROJECT SPECIFIC - Large files and temporary data
+# ML Models and embeddings (can be regenerated)
+data/document_embeddings.pkl
+data/*.pkl
+models/*.pkl
+
+# Backup and temporary files
+data/*_backup.json
+data/search_index_backup.json
+
+# Large debugging/development files
+data/wrong_format_entries.json
+data/full_scale_harvest_results.json
+data/harvest_*.json
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Crawler temporary data
+crawler/temp/
+crawler/*.db
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
