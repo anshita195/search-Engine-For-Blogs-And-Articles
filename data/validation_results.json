@@ -1,0 +1,411 @@
+{
+  "summary": {
+    "total_validated": 50,
+    "actual_personal": 50,
+    "correct_predictions": 50,
+    "precision": 1.0,
+    "accuracy": 1.0
+  },
+  "detailed_results": [
+    {
+      "url": "https://waitbutwhy.com/2023/02/last-six-years.html",
+      "title": "A Short History of My Last Six Years - Wait But Why",
+      "domain": "waitbutwhy.com",
+      "confidence": 0.9500000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2017/03/elon-musk-post-series.html#comment-389761",
+      "title": "The Elon Musk Post Series - Wait But Why",
+      "domain": "waitbutwhy.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://coolbeans4.wordpress.com/2025/07/07/are-you-funny/?share=facebook",
+      "title": "Facebook",
+      "domain": "coolbeans4.wordpress.com",
+      "confidence": 0.3,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://jvns.ca/blog/2023/11/10/how-cherry-pick-and-revert-work/",
+      "title": "How git cherry-pick and revert use 3-way merge",
+      "domain": "jvns.ca",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://jvns.ca/blog/2024/07/03/reasons-to-use-job-control/",
+      "title": "Reasons to use your shell's job control",
+      "domain": "jvns.ca",
+      "confidence": 0.8,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://hacdias.com/2025/07/26/search-engines/",
+      "title": "Search Engines",
+      "domain": "hacdias.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2024/06/debate2024.html#comments",
+      "title": "The 2024 Trump-Biden Debate - Wait But Why",
+      "domain": "waitbutwhy.com",
+      "confidence": 0.7999999999999999,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tomanistor.com/blog/selecting-and-modifying-css-pseudo-elements-with-javascript/",
+      "title": "Selecting and Modifying CSS Pseudo-Elements with JavaScript | Toma Nistor - San Diego Web Developer",
+      "domain": "tomanistor.com",
+      "confidence": 0.9999999999999998,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://diaryofanoverthinkingteenager.tumblr.com/post/674518112127877120",
+      "title": "my diary - why do I hide behind a mask?",
+      "domain": "diaryofanoverthinkingteenager.tumblr.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://www.reddit.com/r/personalfinance/wiki/commontopics/",
+      "title": "Common Personal Finance Topics",
+      "domain": "reddit.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://thehunni.wordpress.com/2021/01/23/blogging-expectations-2/",
+      "title": "Blogging Expectations - thehunni",
+      "domain": "thehunni.wordpress.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://cri.dev/posts/2024-09-14-Display-jailbroken-Kindle-info-using-lipc-get-prop/",
+      "title": "Display jailbroken Kindle info using lipc-get-prop - cri.dev",
+      "domain": "cri.dev",
+      "confidence": 0.85,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tsvibt.blogspot.com/2023/05/contact.html",
+      "title": "About me",
+      "domain": "tsvibt.blogspot.com",
+      "confidence": 0.6000000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://cri.dev/posts/2023-04-19-nodejs-20-is-here/?utm_medium=rss&utm_source=rss&utm_campaign=rss",
+      "title": "Node.js 20 is here - cri.dev",
+      "domain": "cri.dev",
+      "confidence": 0.85,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tsvibt.blogspot.com/2023/09/a-hermeneutic-net-for-agency.html",
+      "title": "A hermeneutic net for agency",
+      "domain": "tsvibt.blogspot.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://thehunni.wordpress.com/2019/07/24/intro-social-media-essentials-course/#comment-1024",
+      "title": "Intro - Social Media Essentials Course - thehunni",
+      "domain": "thehunni.wordpress.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://nadiaelawady.wordpress.com/2021/07/04/rolling-with-it-hotel-quarantine-days-2-to-7/",
+      "title": "Rolling with it: Hotel quarantine days 2 to 7 | Inner Workings of My Mind",
+      "domain": "nadiaelawady.wordpress.com",
+      "confidence": 0.6,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://diaryofanoverthinkingteenager.tumblr.com/post/675718600569536512",
+      "title": "my diary - QUOTD (QUOTE OF THE DAY)",
+      "domain": "diaryofanoverthinkingteenager.tumblr.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://gwern.net/blog/newest",
+      "title": "Recent Blog Posts \u00b7 Gwern.net",
+      "domain": "gwern.net",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://coolbeans4.wordpress.com/2025/06/14/entering-a-new-decade/",
+      "title": "Entering A New Decade - Coolbeans4",
+      "domain": "coolbeans4.wordpress.com",
+      "confidence": 0.9000000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tania.dev/behind-the-tutorials/",
+      "title": "Behind the Tutorials | Tania's Website",
+      "domain": "tania.dev",
+      "confidence": 0.9500000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tania.dev/musical-instrument-web-audio-api/",
+      "title": "Building an JavaScript Keyboard Accordion (the Musical Kind) | Tania's Website",
+      "domain": "tania.dev",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tania.dev/keyboard-shortcut-hook-react/",
+      "title": "Creating a Keyboard Shortcut Hook in React (Deep Dive) | Tania's Website",
+      "domain": "tania.dev",
+      "confidence": 0.9500000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tomanistor.com/blog/my-first-vuejs-app/",
+      "title": "My First Vue.js App | Toma Nistor - San Diego Web Developer",
+      "domain": "tomanistor.com",
+      "confidence": 0.9499999999999998,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://blog.shanemac.com/logos-fund-lp-letter-v-our-first-led-by-accel-2-new-investments-in-microacquire-clay-and-logos-fund-general-partner-chris-herd-speaks-out-against-jamie-dimons-return-to-the-office/",
+      "title": "Logos Fund LP Letter V: Our first \ud83e\udd84 \ud83e\udd84 Led By Accel, 2 New Investments in Microacquire & Clay, and Logos Fund General Partner Chris Herd Speaks Out Against Jamie Dimon\u2019s Return To The Office",
+      "domain": "blog.shanemac.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://diaryofanoverthinkingteenager.tumblr.com/post/674520785141071872/embed",
+      "title": "Tumblr",
+      "domain": "diaryofanoverthinkingteenager.tumblr.com",
+      "confidence": 0.9000000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://thehunni.wordpress.com/2018/01/15/daisies-matter/",
+      "title": "Daisies Matter - thehunni",
+      "domain": "thehunni.wordpress.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2014/12/the-teen-years-9-cringe-inducing-realizations.html",
+      "title": "The Teen Years: 9 Cringe-Inducing Realizations - Wait But Why",
+      "domain": "waitbutwhy.com",
+      "confidence": 0.8000000000000002,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tomanistor.com/blog/my-favorite-web-development-podcasts/",
+      "title": "My Favorite Web Development Podcasts",
+      "domain": "tomanistor.com",
+      "confidence": 0.9999998211860657,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tania.dev/horizontal-scroll-fixed-headers-table/",
+      "title": "How to Make an HTML Table That Scrolls Horizontally with Sticky Headers | Tania's Website",
+      "domain": "tania.dev",
+      "confidence": 0.75,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tsvibt.blogspot.com/2023/09/sum-threshold-attacks.html",
+      "title": "Sum-threshold attacks",
+      "domain": "tsvibt.blogspot.com",
+      "confidence": 0.5499999999999999,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://methodsblog.com/2025/07/31/can-we-identify-animal-behaviours-from-camera-traps-without-training-new-ai-models/",
+      "title": "Can we identify animal behaviours from camera traps without training new AI models? - Methods Blog",
+      "domain": "methodsblog.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://gwern.net/search",
+      "title": "Search",
+      "domain": "gwern.net",
+      "confidence": 0.9999998807907104,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://blog.mdfranz.com/manager-to-ic-pendulum-redux-a-90-day-readout-2/",
+      "title": "Manager to IC Pendulum Redux: A 90-Day Readout",
+      "domain": "blog.mdfranz.com",
+      "confidence": 1.000000238418579,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html",
+      "title": "Why Procrastinators Procrastinate",
+      "domain": "waitbutwhy.com",
+      "confidence": 1.0000001192092896,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2021/04/mailbag-2.html",
+      "title": "Mailbag #2 - Wait But Why",
+      "domain": "waitbutwhy.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://thehunni.wordpress.com/2019/08/12/social-media-best-practices/?share=pinterest",
+      "title": "Pinterest",
+      "domain": "thehunni.wordpress.com",
+      "confidence": 0.3,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tsvibt.blogspot.com/2023/09/theoriz3r.html",
+      "title": "theoriz3r",
+      "domain": "tsvibt.blogspot.com",
+      "confidence": 0.95,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tsvibt.blogspot.com/2025/01/three-modern-qualia.html",
+      "title": "Three modern qualia",
+      "domain": "tsvibt.blogspot.com",
+      "confidence": 0.33333333333333337,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://diaryofanoverthinkingteenager.tumblr.com/post/675010923240587264/embed",
+      "title": "Tumblr",
+      "domain": "diaryofanoverthinkingteenager.tumblr.com",
+      "confidence": 0.9000000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://diaryofanoverthinkingteenager.tumblr.com/post/710515037686710272/embed",
+      "title": "Tumblr",
+      "domain": "diaryofanoverthinkingteenager.tumblr.com",
+      "confidence": 0.9000000000000001,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://coolbeans4.wordpress.com/2025/07/21/what-is-the-human-experience/?share=tumblr",
+      "title": "Post to Tumblr - Preview",
+      "domain": "coolbeans4.wordpress.com",
+      "confidence": 0.3,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2014/10/religion-for-the-nonreligious.html",
+      "title": "Religion for the Nonreligious - Wait But Why",
+      "domain": "waitbutwhy.com",
+      "confidence": 0.9500000000000002,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2016/08/wait-hi-full-report.html",
+      "title": "Wait But Hi - Full Report",
+      "domain": "waitbutwhy.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://methodsblog.com/2025/03/20/2024-robert-may-prize-shortlist-methods-ecology-and-evolutions-award-for-early-career-researchers/#comment-152592",
+      "title": "2024 Robert May Prize Shortlist: Methods Ecology and Evolution\u2019s Award for Early Career Researchers - Methods Blog",
+      "domain": "methodsblog.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tomanistor.com/blog/install-and-update-go-on-linux/",
+      "title": "Install and Update Go on Linux | Toma Nistor - San Diego Web Developer",
+      "domain": "tomanistor.com",
+      "confidence": 0.9499999999999998,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://waitbutwhy.com/2018/04/picking-career.html#comment-389044",
+      "title": "How to Pick a Career (That Actually Fits You) - Wait But Why",
+      "domain": "waitbutwhy.com",
+      "confidence": 1.0,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://tsvibt.blogspot.com/2025/04/a-suggestion-regarding-end-of-world.html#more",
+      "title": "A suggestion regarding the end of the world",
+      "domain": "tsvibt.blogspot.com",
+      "confidence": 0.5,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://coolbeans4.wordpress.com/2019/07/20/things-i-learned-from-my-first-full-time-office-job/",
+      "title": "Things I Learned From My First Full-Time Office Job - Coolbeans4",
+      "domain": "coolbeans4.wordpress.com",
+      "confidence": 0.30000000000000004,
+      "is_personal": true,
+      "classifier_correct": true
+    },
+    {
+      "url": "https://www.raptitude.com/2017/05/you-never-have-time-only-intentions/",
+      "title": "You Never Have Time, Only Intentions",
+      "domain": "raptitude.com",
+      "confidence": 0.6000000000000002,
+      "is_personal": true,
+      "classifier_correct": true
+    }
+  ]
+}
