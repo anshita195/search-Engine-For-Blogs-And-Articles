@@ -1,27 +1,6 @@
-# Render-Compatible Dependencies - No Rust Compilation Required
-# Core API
+# Ultra-minimal requirements for Render deployment
 fastapi==0.68.0
 uvicorn==0.15.0
-
-# Search Engine - Use older versions with pre-compiled wheels
-sentence-transformers==2.1.0
-scikit-learn==1.1.0
-beautifulsoup4==4.11.0
 requests==2.28.0
-pandas==1.5.0
-numpy==1.21.0
-
-# Data processing - Stable versions
-joblib==1.2.0
-python-dotenv==0.19.0
-
-# Utilities - Avoid Rust dependencies
-tqdm==4.66.1
-click==8.0.0
-pydantic==1.10.12
-python-multipart==0.0.5
-
-# Development (only install locally)
-pytest==7.1.0
-black==22.0.0
-flake8==5.0.0
+numpy==1.21.6
+scikit-learn==1.0.2
