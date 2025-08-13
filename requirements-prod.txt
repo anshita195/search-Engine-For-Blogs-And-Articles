@@ -1,0 +1,20 @@
+# Production Dependencies - Minimal for Cloud Deployment
+# Core API
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Search Engine
+sentence-transformers==2.2.2
+scikit-learn==1.4.0
+beautifulsoup4==4.12.2
+requests==2.31.0
+pandas>=2.2.3,<3
+numpy==1.26.2
+
+# Data processing
+joblib==1.3.2
+python-dotenv==1.0.0
+
+# Optional: Only if needed for specific features
+# torch (will be installed by sentence-transformers)
+# transformers (will be installed by sentence-transformers)
