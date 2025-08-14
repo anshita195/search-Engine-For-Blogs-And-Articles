@@ -11,6 +11,7 @@ from pathlib import Path
 import sys
 import time
 from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
+import os
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -37,12 +38,21 @@ def load_search_index():
         search_engine.load_index()
         print(f"📚 Loaded {len(search_engine.search_index)} documents into memory")
         
-        # Initialize semantic search
+        # Initialize semantic search (optional via env)
         try:
-            from api.semantic_search import SemanticSearch
-            SEMANTIC_SEARCH = SemanticSearch()
-            SEMANTIC_SEARCH.load_or_create_embeddings(search_engine.search_index)
-            print("🧠 Semantic search initialized")
+            enable_sem = str(os.getenv("SEMANTIC_ENABLED", "0")).lower() in ("1", "true", "yes")
+            if enable_sem:
+                from api.semantic_search import SemanticSearch
+                model = os.getenv("SEMANTIC_MODEL", "paraphrase-MiniLM-L3-v2")
+                max_docs = int(os.getenv("SEMANTIC_MAX_DOCS", "0") or 0)  # 0 = no cap
+                batch_size = int(os.getenv("SEMANTIC_BATCH", "32") or 32)
+                dtype = os.getenv("SEMANTIC_DTYPE", "float16")
+                SEMANTIC_SEARCH = SemanticSearch(model_name=model, max_docs=max_docs, batch_size=batch_size, dtype=dtype)
+                SEMANTIC_SEARCH.load_or_create_embeddings(search_engine.search_index)
+                print(f"🧠 Semantic search initialized (model={model}, max_docs={max_docs or 'all'}, batch={batch_size}, dtype={dtype})")
+            else:
+                print("ℹ️ Semantic search disabled (SEMANTIC_ENABLED=1 to enable)")
+                SEMANTIC_SEARCH = None
         except Exception as e:
             print(f"⚠️ Semantic search not available: {e}")
             SEMANTIC_SEARCH = None
@@ -212,4 +222,5 @@ async def get_metrics_endpoint():
 if __name__ == "__main__":
     import uvicorn
     load_search_index()
-    uvicorn.run(app, host="0.0.0.0", port=8001) 
+    port = int(os.getenv("PORT", "8001"))
+    uvicorn.run(app, host="0.0.0.0", port=port) 
