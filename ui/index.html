@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Blog Search Engine</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,261 +14,278 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #202124;
+            line-height: 1.6;
         }
-        
+
+        /* Header */
+        .header {
+            padding: 20px 40px;
+            border-bottom: 1px solid #e8eaed;
+            background: #fff;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a73e8;
+        }
+
+        /* Main container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-        
-        .header {
+
+        /* Search section */
+        .search-section {
+            padding: 60px 0 40px 0;
             text-align: center;
-            margin-bottom: 40px;
-            color: white;
         }
-        
-        .header h1 {
+
+        .search-title {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        
-        .search-container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            font-weight: 400;
+            color: #202124;
             margin-bottom: 30px;
         }
-        
+
         .search-box {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            max-width: 584px;
+            margin: 0 auto 30px auto;
+            position: relative;
         }
-        
+
         .search-input {
-            flex: 1;
-            min-width: 300px;
-            padding: 15px 20px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
+            width: 100%;
+            padding: 16px 20px;
             font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .search-input:focus {
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
         }
-        
-        .search-button {
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+
+        .search-input:hover {
+            box-shadow: 0 2px 8px 1px rgba(64,60,67,.24);
         }
-        
-        .search-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+
+        .search-input:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 2px 8px 1px rgba(64,60,67,.24);
         }
-        
-        .search-controls {
+
+        .search-buttons {
             display: flex;
+            justify-content: center;
             gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
-        
-        .filter-select {
-            padding: 10px 15px;
-            border: 1px solid #e1e5e9;
-            border-radius: 8px;
+
+        .search-button {
+            padding: 10px 20px;
             font-size: 14px;
-            background: white;
-        }
-        
-        .results-container {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            min-height: 200px;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-        
-        .result-item {
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
             background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #667eea;
-            transition: all 0.3s ease;
+            color: #3c4043;
+            cursor: pointer;
+            transition: all 0.1s ease;
         }
-        
-        .result-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        .search-button:hover {
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+            background: #f1f3f4;
+            border: 1px solid #dadce0;
         }
-        
+
+        .search-suggestions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .suggestion-tag {
+            padding: 6px 12px;
+            background: #f1f3f4;
+            border-radius: 16px;
+            color: #3c4043;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .suggestion-tag:hover {
+            background: #e8eaed;
+        }
+
+        /* Results section */
+        .results-section {
+            max-width: 652px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .results-info {
+            color: #70757a;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .result-item {
+            margin-bottom: 30px;
+        }
+
+        .result-url {
+            color: #1a0dab;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
         .result-title {
-            color: #667eea;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            color: #1a0dab;
+            font-size: 20px;
+            font-weight: 400;
             text-decoration: none;
+            line-height: 1.3;
+            display: block;
+            margin-bottom: 3px;
         }
-        
+
         .result-title:hover {
             text-decoration: underline;
         }
-        
-        .result-domain {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
+
+        .result-title:visited {
+            color: #681da8;
         }
-        
+
         .result-content {
-            color: #555;
-            line-height: 1.6;
+            color: #4d5156;
+            font-size: 14px;
+            line-height: 1.58;
         }
-        
+
+        /* Pagination */
         .pagination {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 10px;
-            margin-top: 30px;
+            margin: 40px 0;
         }
-        
-        .page-button {
-            padding: 10px 15px;
-            border: 1px solid #e1e5e9;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+
+        .page-btn {
+            padding: 10px 16px;
+            color: #1a73e8;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.1s ease;
         }
-        
-        .page-button:hover {
-            background: #667eea;
-            color: white;
+
+        .page-btn:hover {
+            background: #f1f3f4;
         }
-        
-        .page-button.active {
-            background: #667eea;
-            color: white;
+
+        .page-btn.active {
+            color: #202124;
+            font-weight: 500;
         }
-        
-        .stats {
+
+        /* Loading state */
+        .loading {
             text-align: center;
-            color: white;
-            margin-top: 20px;
+            padding: 40px 20px;
+            color: #70757a;
             font-size: 14px;
-            opacity: 0.8;
         }
-        
+
+        /* Footer */
         .footer {
+            background: #f2f2f2;
+            padding: 15px 0;
             text-align: center;
-            color: white;
-            margin-top: 40px;
-            padding: 20px;
-            opacity: 0.8;
+            color: #70757a;
+            font-size: 14px;
+            margin-top: 50px;
         }
-        
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .search-title {
                 font-size: 2rem;
             }
-            
-            .search-container {
-                padding: 20px;
-            }
-            
-            .search-box {
+
+            .search-buttons {
                 flex-direction: column;
+                align-items: center;
             }
-            
-            .search-input {
-                min-width: auto;
+
+            .search-suggestions {
+                justify-content: center;
+            }
+
+            .container {
+                padding: 0 15px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="logo">Personal Blog Search</div>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <h1>🔍 Personal Blog Search</h1>
-            <p>Discover authentic voices and real experiences from personal blogs</p>
-        </div>
-        
-        <div class="search-container">
+        <div class="search-section">
+            <h1 class="search-title">Discover Authentic Voices</h1>
+            
             <div class="search-box">
-                <input type="text" id="searchInput" class="search-input" placeholder="Search for programming, career advice, personal stories..." />
-                <button onclick="search()" class="search-button">Search</button>
+                <input type="text" id="searchInput" class="search-input" 
+                       placeholder="Search personal blogs..." />
             </div>
             
-
+            <div class="search-buttons">
+                <button onclick="search()" class="search-button">Search Blogs</button>
+            </div>
+            
+            <div class="search-suggestions">
+                <span class="suggestion-tag" onclick="searchSuggestion('programming')">Programming</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('career advice')">Career</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('startup')">Startup</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('learning')">Learning</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('personal experience')">Experience</span>
+            </div>
         </div>
-        
-        <div class="results-container">
+
+        <div class="results-section">
             <div id="results">
                 <div class="loading">
-                    <p>🔍 Search through personal blogs to find authentic voices and real experiences.</p>
-                    <p>Try searching for: "programming", "career advice", "personal experience"</p>
+                    Enter a search term above to find authentic personal blogs
                 </div>
             </div>
             <div id="pagination" class="pagination"></div>
         </div>
-        
-
     </div>
-    
+
     <div class="footer">
-        <p>Powered by hybrid ML search • Sub-1ms performance</p>
+        <p>Powered by hybrid ML search for discovering authentic voices</p>
     </div>
 
     <script>
         let currentPage = 1;
         let currentQuery = '';
-        
-        // Load domains on page load
-        window.onload = function() {
-            loadDomains();
-        };
-        
-        // Search on Enter key
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                search();
-            }
-        });
-        
+
         function search(page = 1) {
             const query = document.getElementById('searchInput').value.trim();
             if (!query) return;
@@ -275,7 +293,7 @@
             currentPage = page;
             currentQuery = query;
             
-            document.getElementById('results').innerHTML = '<div class="loading">🔍 Searching...</div>';
+            document.getElementById('results').innerHTML = '<div class="loading">Searching...</div>';
             
             const params = new URLSearchParams({
                 q: query,
@@ -289,19 +307,25 @@
                     displayResults(data);
                 })
                 .catch(error => {
-                    document.getElementById('results').innerHTML = '<div class="loading">❌ Error: ' + error.message + '</div>';
+                    document.getElementById('results').innerHTML = '<div class="loading">Error: ' + error.message + '</div>';
                 });
         }
-        
+
+        function searchSuggestion(query) {
+            document.getElementById('searchInput').value = query;
+            search();
+        }
+
         function displayResults(data) {
             const resultsDiv = document.getElementById('results');
             
             if (data.results.length === 0) {
-                resultsDiv.innerHTML = '<div class="loading">🔍 No results found. Try a different search term.</div>';
+                resultsDiv.innerHTML = '<div class="loading">No results found. Try a different search term.</div>';
                 return;
             }
             
-            let html = '';
+            let html = `<div class="results-info">About ${data.total_results} results (${data.search_time_ms}ms)</div>`;
+            
             data.results.forEach(result => {
                 const title = result.title.replace(/[<>]/g, '');
                 const domain = result.domain.replace(/[<>]/g, '');
@@ -309,40 +333,46 @@
                 
                 html += `
                     <div class="result-item">
+                        <div class="result-url">${domain}</div>
                         <a href="${result.url}" target="_blank" class="result-title">${title}</a>
-                        <div class="result-domain">${domain}</div>
-                        <div class="result-content">${content.substring(0, 200)}...</div>
+                        <div class="result-content">${content.substring(0, 160)}...</div>
                     </div>
                 `;
             });
             
             resultsDiv.innerHTML = html;
             
-            // Show pagination
             if (data.total_pages > 1) {
                 showPagination(data);
             } else {
                 document.getElementById('pagination').innerHTML = '';
             }
-            
-
         }
-        
+
         function showPagination(data) {
             const paginationDiv = document.getElementById('pagination');
             let html = '';
             
-            for (let i = 1; i <= data.total_pages; i++) {
-                const activeClass = i === data.page ? 'active' : '';
-                html += `<button class="page-button ${activeClass}" onclick="search(${i})">${i}</button>`;
+            if (data.page > 1) {
+                html += `<a href="#" class="page-btn" onclick="search(${data.page - 1})">Previous</a>`;
+            }
+            
+            for (let i = Math.max(1, data.page - 2); i <= Math.min(data.total_pages, data.page + 2); i++) {
+                html += `<a href="#" class="page-btn ${i === data.page ? 'active' : ''}" onclick="search(${i})">${i}</a>`;
+            }
+            
+            if (data.page < data.total_pages) {
+                html += `<a href="#" class="page-btn" onclick="search(${data.page + 1})">Next</a>`;
             }
             
             paginationDiv.innerHTML = html;
         }
-        
-        function loadDomains() {
-            // Domain loading removed for cleaner UI
-        }
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                search();
+            }
+        });
     </script>
 </body>
-</html> 
+</html>
