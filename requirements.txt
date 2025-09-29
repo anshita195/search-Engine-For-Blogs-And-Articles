@@ -4,6 +4,7 @@ uvicorn[standard]==0.24.0
 
 # Search & ML (lightweight versions)
 sentence-transformers==2.2.2
+huggingface-hub==0.19.4
 scikit-learn==1.4.0
 numpy==1.26.2
 
