@@ -40,7 +40,8 @@ def load_search_index():
         
         # Initialize semantic search (optional via env)
         try:
-            enable_sem = str(os.getenv("SEMANTIC_ENABLED", "0")).lower() in ("1", "true", "yes")
+            # enable_sem = str(os.getenv("SEMANTIC_ENABLED", "0")).lower() in ("1", "true", "yes")
+            enable_sem = True
             if enable_sem:
                 from api.semantic_search import SemanticSearch
                 model = os.getenv("SEMANTIC_MODEL", "paraphrase-MiniLM-L3-v2")
