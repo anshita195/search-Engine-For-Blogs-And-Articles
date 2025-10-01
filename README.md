@@ -3,7 +3,7 @@ This project is a complete, end-to-end prototype of a specialized search engine 
 
 The system uses a multi-stage machine learning pipeline for content classification and a hybrid search model combining lexical and semantic search to provide relevant results. The entire application is containerized with Docker for consistent and reproducible environments.
 
-## ✨ Key Features
+## Key Features
 Intelligent Content Curation: Employs a four-stage classification funnel to ensure only high-quality personal blogs are indexed.
 
 Hybrid Search: Combines fast, precise lexical (keyword) search with a powerful semantic (meaning-based) search as a fallback.
@@ -14,7 +14,7 @@ Containerized: Fully containerized with Docker, ensuring a consistent and portab
 
 Offline Data Pipeline: Decouples the data processing and model training from the live serving API, ensuring robustness and resilience.
 
-## 🏛️ System Architecture
+## System Architecture
 The project's architecture is divided into two main components: an offline data pipeline for building the index and an online API for serving live queries.
 
 ### 1. Offline Data Pipeline
@@ -47,7 +47,7 @@ If that fails to find sufficient results, the system falls back to a semantic se
 
 Caching: An in-memory LRU Cache stores the results of recent queries to ensure fast responses for popular terms.
 
-#### 🚀 Getting Started
+## Getting Started
 You can run this project using either Docker (recommended for consistency) or a local Python environment.
 
 Prerequisites
@@ -85,7 +85,7 @@ pip install -r requirements.txt
 #### or 8000 if not set.
 python api/main.py
 
-## ⚙️ Running the Data Pipeline Scripts
+## Running the Data Pipeline Scripts
 The machine learning models are created and managed by scripts in the /scripts directory. The prototype_embeddings.pkl is included, but the TF-IDF models must be generated locally.
 
 ### Training the Models
