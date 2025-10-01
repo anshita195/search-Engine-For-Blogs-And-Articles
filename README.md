@@ -1,242 +1,113 @@
-# 🔍 Personal Blog Search Engine
+#### A Niche Search Engine for Personal Blogs
+This project is a complete, end-to-end prototype of a specialized search engine designed to index and search high-quality articles from personal blogs, actively filtering out corporate and marketing content.
 
-[![CI/CD Pipeline](https://github.com/anshita195/search-Engine-For-Blogs-And-Articles/actions/workflows/ci.yml/badge.svg)](https://github.com/anshita195/search-Engine-For-Blogs-And-Articles/actions)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.68.0-009688.svg)](https://fastapi.tiangolo.com/)
+The system uses a multi-stage machine learning pipeline for content classification and a hybrid search model combining lexical and semantic search to provide relevant results. The entire application is containerized with Docker for consistent and reproducible environments.
 
-A production-grade search engine that discovers and indexes authentic personal blogs while filtering out corporate content using hybrid ML classification and semantic search.
+### ✨ Key Features
+Intelligent Content Curation: Employs a four-stage classification funnel to ensure only high-quality personal blogs are indexed.
 
-## 🎯 Key Features
+Hybrid Search: Combines fast, precise lexical (keyword) search with a powerful semantic (meaning-based) search as a fallback.
 
-- **🤖 Multi-Stage ML Classification**: 85% precision in identifying personal vs corporate content
-- **⚡ Sub-20ms Search Latency**: Optimized with in-memory inverted indexes and LRU caching  
-- **🧠 Hybrid Search**: Keyword AND logic with semantic fallback using sentence transformers
-- **📊 378+ Personal Blogs**: Curated index of authentic personal voices
-- **🚀 Production Ready**: Docker containerization, CI/CD pipeline, live deployment
+Modern Backend: Built with FastAPI for high-performance, asynchronous request handling and automatic API documentation.
 
-## 📊 Performance Metrics
+Containerized: Fully containerized with Docker, ensuring a consistent and portable environment from development to production.
 
-| Metric | Value |
-|--------|-------|
-| **Classification Precision** | 85%+ |
-| **Search Latency** | <20ms average |
-| **Index Size** | 378+ personal blogs |
-| **Domains Covered** | 47+ unique domains |
-| **API Uptime** | 99.9% (production) |
+Offline Data Pipeline: Decouples the data processing and model training from the live serving API, ensuring robustness and resilience.
 
-## 🏗️ Architecture
+### 🏛️ System Architecture
+The project's architecture is divided into two main components: an offline data pipeline for building the index and an online API for serving live queries.
 
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Web Crawler   │───▶│  ML Classifiers  │───▶│  Search Index   │
-│                 │    │                  │    │                 │
-│ • Robots.txt    │    │ • Embedding      │    │ • Inverted      │
-│ • Rate limiting │    │ • Hierarchical   │    │ • LRU Cache     │
-│ • Content ext.  │    │ • TF-IDF         │    │ • Semantic      │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                                 │
-                                 ▼
-                       ┌─────────────────┐
-                       │   FastAPI       │
-                       │                 │
-                       │ • REST API      │
-                       │ • Health checks │
-                       │ • Metrics       │
-                       └─────────────────┘
-```
+## 1. Offline Data Pipeline
+This is the data engineering core of the project, responsible for creating the search_index.json.
 
-## 🚀 Quick Start
+Harvesting: New candidate URLs are discovered by crawling the links on already-approved personal blogs (scripts/full_scale_harvest.py).
 
-### Local Development
+Classification Funnel: Each candidate URL is passed through a four-stage classification pipeline to determine its quality:
 
-```bash
-# Clone repository
-git clone https://github.com/anshita195/search-Engine-For-Blogs-And-Articles
+Domain Filter: A fast, rule-based check on the URL string.
+
+Structural Heuristics: An analysis of the page's HTML structure using BeautifulSoup.
+
+TF-IDF Classifier: A Scikit-learn model that classifies based on keyword statistics.
+
+Embedding Classifier: A Sentence Transformer model that classifies based on semantic meaning.
+
+Index Creation: Documents that pass the funnel are added to the final search index.
+
+## 2. Online Serving API
+This is the real-time component that handles user search queries.
+
+Loading: The FastAPI server starts and loads all necessary data into memory, including the search index and all pre-computed ML models and embeddings.
+
+Hybrid Search: User queries are handled by a hybrid search strategy:
+
+First, a fast lexical search is performed using an in-memory inverted index.
+
+If that fails to find sufficient results, the system falls back to a semantic search, which uses cosine similarity to find the most relevant documents by meaning.
+
+Caching: An in-memory LRU Cache stores the results of recent queries to ensure fast responses for popular terms.
+
+### 🚀 Getting Started
+You can run this project using either Docker (recommended for consistency) or a local Python environment.
+
+Prerequisites
+Python 3.9+
+
+Docker and Docker Compose (for the Docker method)
+
+## 1. Using Docker (Recommended)
+This is the simplest and most reliable way to run the application.
+
+# 1. Clone the repository
+git clone [https://github.com/anshita195/search-Engine-For-Blogs-And-Articles.git](https://github.com/anshita195/search-Engine-For-Blogs-And-Articles.git)
 cd search-Engine-For-Blogs-And-Articles
 
-# Setup environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-# Start server
-python api/main.py
-```
-
-Visit `http://localhost:8001` to access the search interface.
-
-### Docker Deployment
-
-```bash
-# Build and run
+# 2. Build and run the container
 docker-compose up --build
 
-# Or use Docker directly
-docker build -t blog-search .
-docker run -p 8001:8001 blog-search
-```
+The application will be available at http://localhost:8000.
 
-## 🔍 API Usage
+## 2. Using a Local Python Environment
+# 1. Clone the repository and navigate into it
+git clone [https://github.com/anshita195/search-Engine-For-Blogs-And-Articles.git](https://github.com/anshita195/search-Engine-For-Blogs-And-Articles.git)
+cd search-Engine-For-Blogs-And-Articles
 
-### Search Endpoints
+# 2. Create and activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+# On Windows, use: venv\Scripts\activate
 
-```bash
-# Basic search
-curl "http://localhost:8001/api/search?q=programming"
+# 3. Install the dependencies
+pip install -r requirements.txt
 
-# Semantic search
-curl "http://localhost:8001/api/search?q=programming&use_semantic=true"
+# 4. Run the application
+# The server will run on the port specified by the PORT environment variable,
+# or 8000 if not set.
+python api/main.py
 
-# Filtered search
-curl "http://localhost:8001/api/search?q=python&domain=jvns.ca&limit=5"
-```
+### ⚙️ Running the Data Pipeline Scripts
+The machine learning models are created and managed by scripts in the /scripts directory. The prototype_embeddings.pkl is included, but the TF-IDF models must be generated locally.
 
-### Response Format
+## Training the Models
+Before running the classifiers for the first time, you must generate the model artifacts from the prototype dataset.
 
-```json
-{
-  "query": "programming",
-  "results": [
-    {
-      "title": "How I became a Product Manager",
-      "url": "https://manassaloi.com/2018/03/30/how-i-became-pm.html",
-      "domain": "manassaloi.com",
-      "content": "Personal career journey...",
-      "confidence": 0.989
-    }
-  ],
-  "total_results": 23,
-  "search_time_ms": 15.2,
-  "semantic_used": false
-}
-```
+# Ensure your virtual environment is active and dependencies are installed
 
-## 🤖 ML Classification Pipeline
+# 1. Train the TF-IDF model and vectorizer
+python scripts/train_tfidf.py
 
-### Multi-Stage Approach
+# 2. (Optional) Re-compute the prototype embeddings for the semantic classifier
+python scripts/compute_embeddings.py
 
-1. **Embedding Classifier**: Sentence transformers for semantic understanding
-2. **Hierarchical Classifier**: Tree-based feature classification  
-3. **TF-IDF Classifier**: Traditional text analysis
-4. **Heuristic Rules**: Domain patterns and structural analysis
+These commands will generate the necessary .pkl files in the /models directory.
 
-### Training & Validation
+### API Endpoints
+Once the server is running, you can access the interactive API documentation at http://localhost:8000/docs. Key endpoints include:
 
-```bash
-# Train classifiers
-python classifier/embedding_classifier.py
+GET /: Serves the main search UI.
 
-# Validate quality (sample 50 blogs)
-python scripts/validate_quality.py
+GET /api/search: The main hybrid search endpoint.
 
-# Performance benchmarks
-python scripts/performance_benchmark.py
-```
+GET /api/lexical_search: Performs only a keyword search.
 
-## 📈 Quality Assurance
-
-### Automated Testing
-
-- **CI/CD Pipeline**: GitHub Actions with linting, testing, Docker builds
-- **Quality Validation**: Precision/recall metrics with human validation
-- **Performance Testing**: Latency benchmarks and load testing
-- **Health Monitoring**: API health checks and error tracking
-
-### Validation Results
-
-```bash
-# Latest validation metrics
-Classification Accuracy: 85.2%
-Search Latency: 18.7ms avg
-Index Coverage: 378 blogs
-False Positive Rate: 12.3%
-```
-
-## 🛠️ Technical Stack
-
-- **Backend**: FastAPI, Python 3.9+
-- **ML/AI**: Sentence Transformers, Scikit-learn, NumPy
-- **Search**: Custom inverted indexes with LRU caching
-- **Data**: JSON-based document store with embeddings
-- **Deployment**: Docker, GitHub Actions, Render
-- **Frontend**: Vanilla JavaScript with modern CSS
-
-## 🔧 Configuration
-
-### Environment Variables
-
-```bash
-# Optional configuration
-SEARCH_INDEX_PATH=data/search_index.json
-EMBEDDINGS_PATH=data/document_embeddings.pkl
-LOG_LEVEL=INFO
-CACHE_SIZE=1000
-```
-
-### Performance Tuning
-
-- **Memory Usage**: ~200MB base, +400MB with semantic search
-- **Cache Settings**: LRU cache with 1000 query limit
-- **Batch Processing**: 50 documents per classification batch
-
-## 📊 Development Metrics
-
-### Code Quality
-
-- **Test Coverage**: 85%+ (validation scripts)
-- **Linting**: Flake8 compliant
-- **Documentation**: Comprehensive API docs
-- **Type Hints**: Full type annotation coverage
-
-### Performance Benchmarks
-
-```bash
-# Run performance tests
-python scripts/performance_benchmark.py
-
-# Expected results:
-# Basic search: 15-25ms
-# Semantic search: 80-120ms  
-# Index loading: <2 seconds
-# Memory usage: 200-600MB
-```
-
-## 🚀 Deployment
-
-### Production Checklist
-
-- [x] Docker containerization
-- [x] CI/CD pipeline setup
-- [x] Health check endpoints
-- [x] Error handling & logging
-- [x] Performance optimization
-- [x] Security headers
-- [x] Rate limiting ready
-- [ ] Monitoring dashboard
-- [ ] Backup strategy
-
-### Live Demo
-
-🌐 **Production URL**: [Coming Soon - Render Deployment]
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Sentence Transformers** for semantic search capabilities
-- **FastAPI** for the robust web framework
-- **Personal bloggers** who create authentic content worth discovering
-
----
-
-**Built with ❤️ for discovering authentic voices in the digital noise**
+GET /api/semantic_search: Performs only a semantic search.
